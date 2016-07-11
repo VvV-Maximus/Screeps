@@ -16,9 +16,9 @@ module.exports.loop = function () {
     if(harvesters.length < 2) {
         var newName = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
     }
-//Auto-create Builder creeps if less than 2.
+//Auto-create Builder creeps if less than 4.
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-    if(builders.length < 5) {
+    if(builders.length < 4) {
         var newName = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
     }
 //Auto-create upgrader creeps if less than 2.
