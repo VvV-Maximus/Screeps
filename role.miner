@@ -6,4 +6,6 @@ var roleMiner = {
             creep.moveTo(sources[0]);
         }
     }
-}
+};
+
+module.exports = roleMiner;
