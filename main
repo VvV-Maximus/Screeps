@@ -35,6 +35,12 @@ module.exports.loop = function () {
     if(miners.length < 1) {
         var newName = Game.spawns.Spawn1.createCreep([WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner'})
     }
+    
+//Auto-create transporter creeps if less than 1.
+    var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'transporter');
+    if(transporters.length < 1) {
+        var newName = Game.spawns.Spawn1.createCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], undefined, {role: 'transporter'})
+    }
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
