@@ -4,10 +4,11 @@ var roleBuilder = require('role.builder');
 
 module.exports.loop = function () {
 
+//Clears non-existing creep memory.
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
-            //console.log('Clearing non-existing creep memory:', name);
+            console.log('Clearing non-existing creep memory:', name);
         }
     }
     
@@ -16,15 +17,23 @@ module.exports.loop = function () {
     if(harvesters.length < 2) {
         var newName = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
     }
-//Auto-create Builder creeps if less than 4.
+    
+//Auto-create builder creeps if less than 4.
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     if(builders.length < 4) {
         var newName = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
     }
+    
 //Auto-create upgrader creeps if less than 2.
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     if(upgraders.length < 2) {
         var newName = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
+    }
+    
+//Auto-create miner creeps if less than 1.
+    var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
+    if(miners.length < 1) {
+        var newName = Game.spawns.Spawn1.createCreep([WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner'})
     }
 
     for(var name in Game.creeps) {
