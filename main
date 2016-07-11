@@ -15,15 +15,9 @@ module.exports.loop = function () {
         }
     }
     
-//Auto-create harvester creeps if less than .
-    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    if(harvesters.length < 1) {
-        var newName = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'harvester'});
-    }
-    
-//Auto-create builder creeps if less than 1.
+//Auto-create builder creeps if less than 2.
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-    if(builders.length < 1) {
+    if(builders.length < 2) {
         var newName = Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'builder'});
     }
     
@@ -37,6 +31,12 @@ module.exports.loop = function () {
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
     if(repairers.length < 3) {
         var newName = Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'repairer'});
+    }
+    
+//Auto-create harvester creeps if less than 1.
+    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    if(harvesters.length < 1) {
+        var newName = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'harvester'});
     }
 
 /*
