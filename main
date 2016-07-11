@@ -37,7 +37,7 @@ module.exports.loop = function () {
     }
     
 //Auto-create transporter creeps if less than 1.
-    var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'transporter');
+    var transporters = _.filter(Game.creeps, (creep) => creep.memory.role == 'transporter');
     if(transporters.length < 1) {
         var newName = Game.spawns.Spawn1.createCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], undefined, {role: 'transporter'})
     }
