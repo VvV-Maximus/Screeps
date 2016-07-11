@@ -33,10 +33,10 @@ module.exports.loop = function () {
         var newName = Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
     }
     
-//Auto-create repairer creeps if less than 2.
+//Auto-create repairer creeps if less than 3.
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
-    if(repairers.length < 2) {
-        var newName = Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
+    if(repairers.length < 3) {
+        var newName = Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'repairer'});
     }
 
 /*
